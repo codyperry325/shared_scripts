@@ -1,5 +1,15 @@
 import numpy as np
 from numpy import pi
+import glob
+import os.path
+import sys
+import ntpath
+from qe_extra import *
+
+dir = os.getcwd()
+files = glob.glob(os.path.join(dir, "*.out"))
+
+for file in files:
 
 a = np.array([AAAA])
 b = np.array([BBBB])
