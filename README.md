@@ -1,6 +1,6 @@
 # Shared_Scripts
-These are scripts shared with the lab to do specific tasks -- See below for notes on each
+These scripts are re-writes in python based on scripts that I have already done.
 
-Each file assumes that this folder will be in ~/Documents/scripts. If not, please change in each file where the scripts folder is.
+
 
 
