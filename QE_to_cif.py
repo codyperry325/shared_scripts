@@ -9,7 +9,14 @@ from qe_extra import *
 dir = os.getcwd()
 files = glob.glob(os.path.join(dir, "*.out"))
 
+def gen_lat(file):
+    
+
 for file in files:
+
+
+
+
 
 a = np.array([AAAA])
 b = np.array([BBBB])
