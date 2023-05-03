@@ -17,6 +17,8 @@ def line_num(string):
                if bound in line:
                     return(num)
 
+#def vec(vector):
+     #a = 
 
 
 for file in files:
@@ -36,9 +38,18 @@ for file in files:
                                         with open(file_name, 'a+') as cif:
                                              atoms = data
                                              #print(atoms)
-                                             cif.write(atoms)
+                                             #cif.write(atoms)
                                    if "CELL" not in data:
-                                        if len(line_s) == 3:
-                                             print(line_s)
-                                             lattcoor = line_s
+                                        new = []
+                                        #if len(line_s) == 3:
+                                        [for line in data if len(line_s) == 3:]
+                                             lattcorr = line_s 
+                                             new.append(line_s)
+                                             newarray = np.array(new)
+                                   if "CELL" in data:
+                                        alat = data.split(")")
+                                        finalalat = ' '.join(alat).split()
+                                        alattotal = finalalat[2]
+                                        print(alattotal)
 
+print(newarray)
