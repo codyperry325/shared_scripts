@@ -26,3 +26,4 @@ for file in files:
                     data = linecache.getline(file, i)
                     test.write(data)
                     print(data[0])
+
