@@ -54,10 +54,20 @@ def generate_vectors(file):
     final_vector = np.concatenate([v1,v2,v3]).reshape([3,3])
     return final_vector
 
+def write_output(name,vec):
+    with open('Lattice_Vectors.txt', 'a+') as vect:
+        vect.write('Below are the lattice vectors for the given cif files' + '\n')
+        vect.write(' ' + '\n')
+        vect.write(name + '\n')
+        vect.write(vec + '\n')
+        vect.write( ' ' + '\n')
+
 for file in files:
     final = generate_vectors(file)
+    vec = str(final)
     name = ntpath.basename(file)
     print("The lattice vectors for " + name + " are:")
     print(final)
     print(' ')
+    write_output(name,vec)
 

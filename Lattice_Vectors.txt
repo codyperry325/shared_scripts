@@ -1,0 +1,19 @@
+Below are the lattice vectors for the given cif files
+QQQFDJ01.cif
+[[ 7.62599187  0.          0.        ]
+ [-0.18010901  9.42210395  0.        ]
+ [ 2.22587106  2.27489471 29.33320233]]
+ 
+Below are the lattice vectors for the given cif files
+QQQFDJ01.cif
+[[ 7.62599187  0.          0.        ]
+ [-0.18010901  9.42210395  0.        ]
+ [ 2.22587106  2.27489471 29.33320233]]
+ 
+Below are the lattice vectors for the given cif files
+ 
+QQQFDJ01.cif
+[[ 7.62599187  0.          0.        ]
+ [-0.18010901  9.42210395  0.        ]
+ [ 2.22587106  2.27489471 29.33320233]]
+ 
