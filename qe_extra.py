@@ -65,3 +65,21 @@ def grab_variables(self):
     beta = float(findvalue(self,"_cell_angle_beta"))
     gamma = float(findvalue(self,"_cell_angle_gamma"))
     return a,b,c,alpha,beta,gamma 
+
+def mercury1(self):
+     self.write("""
+data_pos
+_symmetry_cell_setting           triclinic
+_symmetry_space_group_name_H-M   'P 1'
+_symmetry_Int_Tables_number      1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 x,y,z""" + '\n')
+
+def mercury2(self):
+     self.write("""loop_
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z""" + '\n')
