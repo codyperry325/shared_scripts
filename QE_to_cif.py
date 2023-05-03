@@ -17,13 +17,28 @@ def line_num(string):
                if bound in line:
                     return(num)
 
+
+
 for file in files:
+     split = os.path.splitext(file)
+     file_name = (split[0]+ '.cif')
      with open(file, 'r+') as f:
           begin = line_num("Begin final coordinates")
           end = line_num("End final coordinates")
           for i in range(begin,end):
-               with open('test.txt', 'a+') as test:
+               with open('coords.txt', 'a+') as coords, open('test.txt', 'a+') as test:
                     data = linecache.getline(file, i)
-                    test.write(data)
-                    print(data[0])
+                    if "density" not in data:
+                         if "volume" not in data:
+                              if "Begin" not in data:
+                                   line_s = data.split()
+                                   if len(line_s) == 4:
+                                        with open(file_name, 'a+') as cif:
+                                             atoms = data
+                                             #print(atoms)
+                                             cif.write(atoms)
+                                   if "CELL" not in data:
+                                        if len(line_s) == 3:
+                                             print(line_s)
+                                             lattcoor = line_s
 
