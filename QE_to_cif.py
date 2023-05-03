@@ -58,27 +58,25 @@ for file in files:
           begin = line_num("Begin final coordinates")
           end = line_num("End final coordinates")
           for i in range(begin,end):
-               with open('coords.txt', 'a+') as coords:
-                    data = linecache.getline(file, i)
-                    if "density" not in data:
-                         if "volume" not in data:
-                              if "Begin" not in data:
-                                   line_s = data.split()
-                                   if len(line_s) == 4:
-                                        with open(atom_name, 'a+') as cif:
-                                             atoms = data
-                                             #print(atoms)
-                                             cif.write(atoms)
-                                   if "CELL" not in data:      
-                                        if len(line_s) == 3:
-                                             with open(latt_name, 'a+') as la:
-                                                  lattcorr = str(data)
-                                                  new = np.array(lattcorr)
-                                                  la.write(lattcorr)
-                                   if "CELL" in data:
-                                        alat = data.split(")")
-                                        finalalat = ' '.join(alat).split()
-                                        alattotal = float(finalalat[2])
+               data = linecache.getline(file, i)
+               if "density" not in data:
+                    if "volume" not in data:
+                          if "Begin" not in data:
+                              line_s = data.split()
+                              if len(line_s) == 4:
+                                   with open(atom_name, 'a+') as cif:
+                                        atoms = data
+                                        cif.write(atoms)
+                              if "CELL" not in data:      
+                                   if len(line_s) == 3:
+                                        with open(latt_name, 'a+') as la:
+                                             lattcorr = str(data)
+                                             new = np.array(lattcorr)
+                                             la.write(lattcorr)
+                              if "CELL" in data:
+                                   alat = data.split(")")
+                                   finalalat = ' '.join(alat).split()
+                                   alattotal = float(finalalat[2])
      with open(file_name, "a+") as i:
           mercury1(i)
           i.close()
