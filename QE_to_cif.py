@@ -5,56 +5,24 @@ import os.path
 import sys
 import ntpath
 from qe_extra import *
+import linecache
 
 dir = os.getcwd()
 files = glob.glob(os.path.join(dir, "*.out"))
 
-def gen_lat(file):
-    
+def line_num(string):
+    bound = string
+    with open(file, 'r+') as f:
+        for num, line in enumerate(f,1):
+               if bound in line:
+                    return(num)
 
 for file in files:
-
-
-
-
-
-a = np.array([AAAA])
-b = np.array([BBBB])
-c = np.array([CCCC])
-
-ab = np.dot(a,b)
-bc = np.dot(b,c)
-ac = np.dot(a,c)
-
-A = np.sqrt((np.dot(a,a)))
-
-C = np.sqrt((np.dot(c,c)))
-
-B = np.sqrt((np.dot(b,b)))
-
-gamma = np.arccos((ab)/(A*B))*(180/pi)
-
-alpha = np.arccos((bc)/(B*C))*(180/pi)
-print("alpha =", alpha)
-
-beta = np.arccos((ac)/(A*C))*(180/pi)
-print("beta = ", beta)
-
-print("gamma =", gamma)
-
-alat = (ALA)
-
-Adone = A*alat*0.529177
-Bdone = B*alat*0.529177
-Cdone = C*alat*0.529177
-print("Alen =", Adone)
-print("Blen =", Bdone)
-print("Clen =", Cdone)
-
-cosBC = np.cos(alpha)
-cosAC = np.cos(beta)
-cosAB = np.cos(gamma)
-
-print("cosBC =", cosBC)
-print("cosAC =", cosAC)
-print("cosAB =", cosAB)
+     with open(file, 'r+') as f:
+          begin = line_num("Begin final coordinates")
+          end = line_num("End final coordinates")
+          for i in range(begin,end):
+               with open('test.txt', 'a+') as test:
+                    data = linecache.getline(file, i)
+                    test.write(data)
+                    print(data[0])
