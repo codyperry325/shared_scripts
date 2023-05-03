@@ -52,6 +52,7 @@ for file in files:
                line_s = line.split()
                if len(line_s) == 4:
                     i.write(line)
+                    print(line)
                elif len(line_s) == 5:
                     line = line[1:]
                     i.write(line)
