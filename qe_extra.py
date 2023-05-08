@@ -94,7 +94,7 @@ def inputscript(name,outputname):
 #SBATCH --output="qe_optnew.%j.%N.out"
 #SBATCH --partition=shared
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=32
+#SBATCH --ntasks-per-node=64
 #SBATCH --export=ALL
 #SBATCH --account=""")
           scr.write(expanse_token)
@@ -116,5 +116,5 @@ export OMP_NUM_THREADS=1
 export ESPRESSO_TMPDIR="/scratch/$USER/job_$SLURM_JOB_ID"
 export ESPRESSO_PSEUDO="/home/punzueta/psuedo_files"
 
-mpirun -np 32 pw.x -i """)
+mpirun -np 64 pw.x -i """)
           scr.write(file_name + " >> " + output_name)
