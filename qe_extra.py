@@ -1,4 +1,5 @@
 import os
+from expanse import expanse_token
 
 def printheader(self):
     self.write("""&CONTROL
@@ -83,3 +84,37 @@ _atom_site_type_symbol
 _atom_site_fract_x
 _atom_site_fract_y
 _atom_site_fract_z""" + '\n')
+
+def inputscript(name,outputname):
+     script_name=(name + ".sh")
+     file_name = name
+     output_name = outputname
+     with open(script_name,"a+") as scr:
+          scr.write("""#!/bin/bash
+#SBATCH --output="qe_optnew.%j.%N.out"
+#SBATCH --partition=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=32
+#SBATCH --export=ALL
+#SBATCH --account=""")
+          scr.write(expanse_token)
+          scr.write("""
+#SBATCH -t 48:00:00
+
+module purge
+module load shared
+module load cpu/0.15.4
+
+#Load module file(s) into the shell environment
+module load gcc/9.2.0
+module load slurm
+module load openmpi/3.1.6
+module load quantum-espresso/6.5-openblas
+
+export MKL_DEBUG_CPU_TYPE=5
+export OMP_NUM_THREADS=1
+export ESPRESSO_TMPDIR="/scratch/$USER/job_$SLURM_JOB_ID"
+export ESPRESSO_PSEUDO="/home/punzueta/psuedo_files"
+
+mpirun -np 32 pw.x -i """)
+          scr.write(file_name + " >> " + output_name)

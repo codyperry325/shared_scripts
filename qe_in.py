@@ -5,13 +5,19 @@ import os.path
 import sys
 import ntpath
 from qe_extra import *
+import expanse
 
 dir = os.getcwd()
 files = glob.glob(os.path.join(dir, "*.cif"))
 
 for file in files:
     split = os.path.splitext(file)
+    name= ntpath.basename(file)
+    split2 = os.path.splitext(name)
     file_name = (split[0]+ '.in')
+    input_name = (split2[0] + '.in')
+    outname = (split2[0] + '.out')
+    inputscript(input_name,outname)
     with open(file, 'r+') as f, open(file_name,'w+') as i:
         global lattice
         lattice = grab_variables(file)
@@ -52,10 +58,9 @@ for file in files:
                line_s = line.split()
                if len(line_s) == 4:
                     i.write(line)
-                    print(line)
+                    #print(line)
                elif len(line_s) == 5:
                     line = line[1:]
                     i.write(line)
-
         
 
